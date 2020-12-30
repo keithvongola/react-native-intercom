@@ -267,4 +267,17 @@ RCT_EXPORT_METHOD(setBottomPadding:(CGFloat)padding resolver:(RCTPromiseResolveB
     resolve([NSNull null]);
 };
 
+RCT_EXPORT_METHOD(displayCarousel:(NSString*)carouselId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    NSLog(@"displayCarousel");
+    
+    UIViewController *controller = RCTPresentedViewController();
+    [RCTUtilsUIOverride setPresentedViewController:controller];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [Intercom presentCarousel:carouselId];
+    });
+
+    resolve([NSNull null]);
+};
+
 @end

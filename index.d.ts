@@ -169,3 +169,10 @@ export function removeEventListener(type: string, handler: (event?: any) => void
  * To enable iOS push notifications, simply call the following anywhere in your code:
  */
 export function registerForPush(): Promise<void>;
+
+/**
+ * displayCarousel
+ * @param {string} carouselId
+ * @returns {Promise<void>}
+ */
+export function displayCarousel(carouselId: string): Promise<void>;
