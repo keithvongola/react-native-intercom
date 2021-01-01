@@ -297,6 +297,17 @@ public class IntercomModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void displayCarousel(String carouselId,Promise promise) {
+        try {
+            Intercom.client().displayCarousel(carouselId);
+            promise.resolve(null);
+        } catch(Exception e) {
+            Log.e(TAG, "Intercom not initialized");
+            promise.reject(e.toString());
+        }
+    }
+    
     private UserAttributes convertToUserAttributes(ReadableMap readableMap) {
         Map<String, Object> map = recursivelyDeconstructReadableMap(readableMap);
         UserAttributes.Builder builder = new UserAttributes.Builder();
